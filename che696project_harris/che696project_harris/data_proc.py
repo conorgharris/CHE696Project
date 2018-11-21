@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """
-che696project_harris.py
+data_proc.py
 Project Including:
  - reading in numeric data from .txt file
  - calculating elastic (G') and viscous (G") moduli
@@ -22,7 +22,7 @@ SUCCESS = 0
 INVALID_DATA = 1
 IO_ERROR = 2
 
-DEFAULT_DATA_FILE_NAME = 'data/20171015_Harris_Conor_TPU_FreqSweep-0002oexp.txt'
+DEFAULT_DATA_FILE_NAME = 'data.txt'
 
 
 def warning(*objs):
@@ -45,7 +45,7 @@ def parse_cmdline(argv):
     args = None
     try:
         args = parser.parse_args(argv)
-        args.txt_data = np.loadtxt(DEFAULT_DATA_FILE_NAME, delimiter='\t')
+        args.txt_data = np.loadtxt(fname=args.txt_data_file, delimiter='\t')
     except IOError as e:
         warning("Problems reading file:", e)
         parser.print_help()
@@ -132,8 +132,8 @@ def plot_stats(base_f_name, data_stats):
         tick.label1.set_fontsize(fontsize)
         tick.label1.set_fontweight('bold')
 
-    plt.xlabel(r'\textbf{f [Hz]}',fontsize = 12, usetex=True)
-    plt.ylabel(r"\textbf{Modulus (G', G'') [Pa]",fontsize = 12, usetex=True)
+    plt.xlabel('f [Hz]',fontsize = 12, usetex=True)
+    plt.ylabel("Modulus (G', G'') [Pa]",fontsize = 12, usetex=True)
     plt.legend(framealpha=1, frameon=True);
     out_name = base_f_name + "moduli" + ".png"
     plt.savefig(out_name)
@@ -152,8 +152,8 @@ def plot_stats(base_f_name, data_stats):
         tick.label1.set_fontsize(fontsize)
         tick.label1.set_fontweight('bold')
 
-    plt.xlabel(r'\textbf{f [Hz]}',fontsize = 12, usetex=True)
-    plt.ylabel(r'\textbf{$|n^*| [Pa \cdot s]$}',fontsize = 12, usetex=True)
+    plt.xlabel('f [Hz]',fontsize = 12, usetex=True)
+    plt.ylabel('$|n^*| [Pa \cdot s]$',fontsize = 12, usetex=True)
     #ax.set_xlim(1)
     ax.set_ylim(10,10e2)
     out_name = base_f_name + "viscosity" + ".png"

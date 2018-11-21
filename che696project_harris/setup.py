@@ -33,11 +33,12 @@ setup(
         'Programming Language :: Python :: 3.7',
     ],
     description="CHE 696 Individual project plotting melt rheology viscous and elastic moduli, and viscosity. ",
-    entry_points={
-        'console_scripts': [
-            'che696project_harris=che696project_harris.cli:main',
-        ],
-    },
+    version=versioneer.get_version(),
+    cmdclass=versioneer.get_cmdclass(),
+
+    entry_points={'console_scripts': ['data_proc = che696project_harris.data_proc:main',
+                            ],
+                },
     install_requires=requirements,
     license="MIT license",
     long_description=readme + '\n\n' + history,
@@ -51,7 +52,5 @@ setup(
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/conorgharris/che696project_harris',
-    version=versioneer.get_version(),
-    cmdclass=versioneer.get_cmdclass(),
     zip_safe=False,
 )

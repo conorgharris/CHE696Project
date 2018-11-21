@@ -2,16 +2,16 @@
 
 """Top-level package for CHE696 Project."""
 
-__author__ = """Conor Gage Harris"""
-__email__ = 'harriscg@umich.edu'
-__version__ = '0.1.0'
+# __author__ = """Conor Gage Harris"""
+# __email__ = 'harriscg@umich.edu'
+# __version__ = '0.1.0'
 
 # Make Python 2 and 3 imports work the same
 # Safe to remove with Python 3-only code
 from __future__ import absolute_import
 
 # Add imports here
-from .che696project_harris import *
+from .data_proc import *
 
 # Handle versioneer
 from ._version import get_versions
