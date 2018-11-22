@@ -80,6 +80,14 @@ class TestDataAnalysis(unittest.TestCase):
         expected_results = np.loadtxt(fname=os.path.join(PROJ_DIR, "20171015_Harris_Conor_TPU_FreqSweep-0002oexp_stats.txt"), delimiter=' ')
         self.assertTrue(np.allclose(expected_results, analysis_results))
 
+    def testSampleData2(self):
+        # A second check, with slightly different values, of the data_analysis function
+        txt_data = np.loadtxt(fname=os.path.join(TEST_DATA_DIR, "20171015_Harris_Conor_ASA_FreqSweep-0001oexp.txt"), delimiter='\t')
+        analysis_results = data_analysis(txt_data)
+        expected_results = np.loadtxt(fname=os.path.join(TEST_DATA_DIR, "20171015_Harris_Conor_ASA_FreqSweep-0001oexp_stats.txt"), delimiter=' ')
+        self.assertTrue(np.allclose(expected_results, analysis_results))
+
+
 # Utility functions
 
 # From http://schinckel.net/2013/04/15/capture-and-test-sys.stdout-sys.stderr-in-unittest.testcase/
